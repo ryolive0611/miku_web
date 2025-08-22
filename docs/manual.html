@@ -1,0 +1,158 @@
+<!doctype html>
+<html lang="ja">
+<head>
+
+  <!-- 追加: ロゴ -->
+<img class="logo" src="img/logo.png" alt="初音ミクのニコニコ本社！爆破大作戦!! ロゴ" />
+
+<!-- 既存 h1 は残してOK（SEO用）。ロゴの下に小さく表示されます。 -->
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Miku Bomberman｜かんたん説明書</title>
+  <meta name="description" content="Miku Bomberman の遊び方・操作・ルールをまとめた簡易マニュアル。" />
+  <meta property="og:title" content="Miku Bomberman｜かんたん説明書" />
+  <meta property="og:description" content="遊び方・操作・ルールをまとめた簡易マニュアル。" />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://ryolive0611.github.io/miku_web/manual" />
+  <style>
+    /* スタイルの追加 */
+    .logo{
+      display:block;
+      margin:0 auto 12px;
+      max-width:min(760px, 90%);
+      height:auto;
+      image-rendering: pixelated;  /* ドット絵なら */
+      filter: drop-shadow(0 6px 24px rgba(0,0,0,.45));
+    }
+    :root{
+      --bg:#0b0b0c; --fg:#e9eef3; --muted:#a8b0b8; --card:#121316; --accent:#6cf;
+      --b:#1c2024; --link:#9ad7ff;
+    }
+    *{box-sizing:border-box}
+    body{
+      margin:0; font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Hiragino Kaku Gothic ProN",
+      "Noto Sans JP", "Meiryo", sans-serif;
+      color:var(--fg); background:linear-gradient(180deg,var(--bg),#111318 60%, #0e1014);
+    }
+    .wrap{max-width:880px; margin:40px auto; padding:0 20px;}
+    header{
+      background:rgba(255,255,255,0.02); border:1px solid #23262b; border-radius:16px;
+      padding:24px 20px; backdrop-filter: blur(6px);
+    }
+    h1{margin:0 0 6px; font-size:28px;}
+    .subtitle{color:var(--muted); margin:0 0 8px}
+    .cta {display:flex; gap:12px; flex-wrap:wrap; margin-top:12px}
+    .btn{
+      display:inline-block; padding:10px 14px; border-radius:12px; text-decoration:none;
+      background:var(--accent); color:#002233; font-weight:700; border:0; box-shadow: 0 4px 18px rgba(102,204,255,.25);
+    }
+    .btn.outline{ background:transparent; color:var(--link); border:1px solid #33404a}
+    section{
+      margin-top:22px; background:var(--card); border:1px solid #23262b;
+      border-radius:16px; padding:18px 20px;
+    }
+    h2{font-size:20px; margin:0 0 10px}
+    p{line-height:1.8; color:#dbe2e9; margin:10px 0}
+    ul{margin:8px 0 8px 1.2em; line-height:1.8}
+    code,kbd{
+      background:#1b2026; border:1px solid #2a3038; color:#eaf6ff; padding:1px 6px; border-radius:6px;
+      font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, "Noto Sans Mono", monospace; font-size:0.95em;
+    }
+    .grid{display:grid; gap:12px}
+    @media (min-width:800px){ .grid{grid-template-columns: 1fr 1fr} }
+    .note{color:#b8c3cc; font-size:.95em}
+    footer{color:#94a0aa; text-align:center; margin:26px 0 12px}
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <h1>初音ミクのニコニコ本社爆破大作戦！！｜かんたん説明書</h1>
+      <p class="subtitle">遊び方・操作・ルールのメモ。ブラウザでそのまま遊べます。</p>
+      <div class="cta">
+        <a class="btn" href="https://ryolive0611.github.io/miku_web/play">▶︎ ゲームを起動</a>
+        <a class="btn outline" href="https://kitao.github.io/pyxel/wasm/launcher/?play=ryolive0611.miku_web.docs.mikunico_bomber&gamepad=enabled">代替ランチャーURL</a>
+      </div>
+    </header>
+
+    <section>
+      <h2>概要</h2>
+      <p>
+        爆弾で道を切り開きながら敵やボスを倒して進む、固定画面アクション。<br/>各ワールド（1〜3）を3ステージずつクリアし、ボス戦（最後はラスボス）に挑みます。
+        <br/>
+        ボンバーマンをやったことがある人ならすぐに遊べるはず。
+      </p>
+    </section>
+
+    <section class="grid">
+      <div>
+        <h2>操作</h2>
+        <ul>
+          <li>移動：<kbd>←</kbd><kbd>→</kbd><kbd>↑</kbd><kbd>↓</kbd>（WASD でも可）</li>
+          <li>爆弾設置：<kbd>Space</kbd>（環境によっては <kbd>Z</kbd> / ゲームパッド <kbd>A</kbd> ）</li>
+          <li>ボムキック：キック入手後、<strong>隣で進行方向を押し続ける</strong>と蹴ります</li>
+          <li>ゲームオーバー画面：<kbd>Enter</kbd> でタイトル画面へ</li>
+        </ul>
+        <p class="note">※ ブラウザ版では <kbd>Esc</kbd> を押すと挙動が止まる場合があります。基本は使わない想定です。</p>
+      </div>
+      <div>
+        <h2>ルール</h2>
+        <ul>
+          <li>爆弾は一定時間で爆発し、十字方向に<strong>爆風</strong>が伸びます。</li>
+          <li>プレイヤーや敵は<strong>爆風や弾</strong>に当たるとミス。</li>
+          <li>残機は<strong>3</strong>。ミスで1つ減り、0でゲームオーバー。（回復はレアアイテムのみ）</li>
+          <li>制限時間あり。0になるとミス扱い。</li>
+          <li>コンティニューはないので、ゲームオーバーしたら初めからやり直し。セーブポイントもなし。めげないで。</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="grid">
+      <div>
+        <h2>アイテム</h2>
+        <ul>
+          <li>スピードアップ：移動が速くなる（段階あり）</li>
+          <li>ボム数アップ：同時設置できる爆弾が増える</li>
+          <li>火力アップ：爆風の届く距離が伸びる</li>
+          <li>ネギ：爆弾を蹴って押し出せるようになります。ボンバーマンで言うところのキック</li>
+          <li>くりたしげたか（レアアイテム）：低確率で出現。全てのステータスがMAXになり、ネギも
+            取った状態に。残機も２つ増えます。
+        </ul>
+      </div>
+      <div>
+        <h2>ボス戦のコツ</h2>
+        <ul>
+          <li>①とにかくネギを取れ。話はそれからだ。</li>
+          <li>②爆風がヒットする場所が左上あたりに固まっているのはめんどくさかったからではないです断じて仕様です。</li>
+        </ul>
+      </div>
+    </section>
+
+    <section>
+      <h2>スコア</h2>
+      <ul>
+        <li>各ステージでのザコキャラ撃破やアイテム取得、進行で加点。</li>
+        <li><strong>ノーデス</strong>（そのワールドでミスなし）でボーナス。</li>
+        <li><strong>残り時間に応じたボーナス</strong>あり（ボス/ラスボスは高め）。</li>
+        <li>スコアはワールドごとに集計され、クリア後に表示されます。</li>
+      </ul>
+      <!-- ランキングURLが決まったらここに追記 -->
+      <p><a href="https://docs.google.com/spreadsheets/d/e/2PACX-1vRwTxZKSdqoUJkxkO8I3eG96pLLjNzdWwyqbeRFty-cgehbs2lVpRmHX0audB7tyGhdcgygfkbDd-XE/pubhtml?gid=416880590&single=true">ランキングを見る</a></p>
+    </section>
+
+    <section>
+      <h2>ブラウザ版のヒント</h2>
+      <ul>
+        <li>Chrome / Edge 推奨。タブを増やしすぎないと安定します。</li>
+        <li>ノートPCなら省電力モードをオフにするとフレーム落ちしにくいです。</li>
+        <li>音量が出ない/遅延する場合、ページをリロードしてください。</li>
+      </ul>
+    </section>
+
+    <footer>
+      © Ryo Oribe / Pyxel<br/>
+      問い合わせ: lylyveoo@gmail.com またはX <a href="https://x.com/ryolive">@ryolive</a> などでお気軽に
+    </footer>
+  </div>
+</body>
+</html>
